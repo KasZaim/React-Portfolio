@@ -1,0 +1,124 @@
+.contact-form{
+    width: 100%;
+    margin-top: 20px;
+
+    ul{
+        padding: 0;
+        margin: 0;
+
+        li{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            margin-bottom: 10px;
+            overflow: hidden;
+            display: block;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 2s 2s;
+            animation-fill-mode: forwards;
+            clear: both;
+
+            li.half{
+                width: 49%;
+                margin-left: 2%;
+                float: left;
+                clear: none;
+
+                &:first-child{
+                    margin-left: 0;
+                }
+            }
+
+            input[type='text'], input[type='email']{
+                width: 100%;
+                border: 0;
+                background: #115173;
+                height: 50px;
+                font-size: 16px;
+                color: #fff;
+                padding: 0 20px;
+                box-sizing: border-box;
+                
+            }
+
+            textarea{
+                width: 100%;
+                border: 0;
+                background: #115173;
+                height: 50px;
+                font-size: 16px;
+                color: #fff;
+                padding: 20px;
+                box-sizing: border-box;
+                min-height: 120px;
+                resize: none;
+                outline: none;  
+            }
+
+            .flat-button{
+                color: #ffd700;
+                font-size: 13px;
+                letter-spacing: 3px;
+                background: 0 0;
+                text-decoration: none;
+                padding: 8px 10px;
+                font-size: 15px;
+                border: 1px solid #ffd700;
+                float: right;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: 0.3s ease-in-out;
+
+                &:hover{
+                    background: #ffd700;
+                    color: #333;
+                }
+                
+            }
+        }   
+    }
+
+    
+}
+.info-map{
+        position: absolute;
+        background-color: #000;
+        top: 50px;
+        right: 25%;
+        z-index: 9999;
+        width: 250px;
+        padding: 20px;
+        color: #fff;
+        font-family: 'Helvetica';
+        font-size: 17px;
+        font-weight: 300;
+        opacity: 0;
+        animation: fadeIn 1s 1.5s;
+        animation-fill-mode: forwards;
+
+        span{
+            font-size: 16px;
+            color: #ffd700;
+            display: block;
+            padding-top: 20px;
+        }
+    }
+
+    .map-wrap{
+        position: absolute;
+        right: 0;
+        width: 53%;
+        height: 100%;
+        background: rgba(8, 253, 216, 0.1);
+        float: right;
+    }
+
+    .leaflet-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        opacity: 0;
+        animation: backInRight 1s 1.2s;
+        animation-fill-mode: forwards;
+    }
