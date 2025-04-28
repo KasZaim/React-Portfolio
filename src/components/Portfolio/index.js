@@ -7,6 +7,27 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import gsap from 'gsap';
 
+import angularIcon from '../../assets/images/icons/angular.svg';
+import typescriptIcon from '../../assets/images/icons/typescript.svg';
+import javascriptIcon from '../../assets/images/icons/javascript.svg';
+import htmlIcon from '../../assets/images/icons/html.svg';
+import cssIcon from '../../assets/images/icons/sass.svg';
+import materialIcon from '../../assets/images/icons/material-design.svg';
+import djangoIcon from '../../assets/images/icons/django.svg';
+import pythonIcon from '../../assets/images/icons/python.svg';
+import restapiIcon from '../../assets/images/icons/api.svg';
+import sqlIcon from '../../assets/images/icons/sql.svg';
+import postgresqlIcon from '../../assets/images/icons/postgresql.svg';
+import redisIcon from '../../assets/images/icons/redis.svg';
+import firebaseIcon from '../../assets/images/icons/firebase.svg';
+import dockerIcon from '../../assets/images/icons/docker.svg';
+import gitIcon from '../../assets/images/icons/git.svg';
+import linuxIcon from '../../assets/images/icons/icons8-linux-24.png';
+import postmanIcon from '../../assets/images/icons/postman-icon.svg';
+import herokuIcon from '../../assets/images/icons/heroku-icon-svgrepo-com.svg';
+import googlecloudIcon from '../../assets/images/icons/google-cloud.svg';
+import scrumIcon from '../../assets/images/icons/scrum-svgrepo-com.svg';
+
 const Portfolio = () => {
   
   const [letterClass, setLetterClass] = useState('text-animate');
@@ -19,7 +40,7 @@ const Portfolio = () => {
       id: 1,
       title: 'E-Commerce Website',
       description: 'A full-stack e-commerce platform with user authentication, product search, and payment integration.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
+      technologies: ['Angular', 'TypeScript', 'HTML', 'CSS', 'JavaScript'],
       image: require('../../assets/images/Join linkedin.jpg'),
       githubLink: 'https://github.com/yourusername/ecommerce',
       liveLink: 'https://ecommerce-demo.com'
@@ -61,6 +82,29 @@ const Portfolio = () => {
         liveLink: 'https://recipe-finder-demo.com'
     }
   ];
+
+  const techIcons = {
+    'Angular': angularIcon,
+    'TypeScript': typescriptIcon,
+    'JavaScript': javascriptIcon,
+    'HTML': htmlIcon,
+    'CSS': cssIcon,
+    'Material Design': materialIcon,
+    'Django': djangoIcon,
+    'Python': pythonIcon,
+    'Rest-API': restapiIcon,
+    'SQL': sqlIcon,
+    'PostgreSQL': postgresqlIcon,
+    'Redis': redisIcon,
+    'Firebase': firebaseIcon,
+    'Docker': dockerIcon,
+    'Git': gitIcon,
+    'Linux': linuxIcon,
+    'Postman': postmanIcon,
+    'Heroku': herokuIcon,
+    'Google Cloud': googlecloudIcon,
+    'Scrum': scrumIcon
+  };
 
   useEffect(() => {
       setTimeout(() => {
@@ -125,7 +169,10 @@ const Portfolio = () => {
                   <p className="project-description">{project.description}</p>
                   <div className="project-tech">
                     {project.technologies.map((tech, index) => (
-                      <span key={index} className="tech-tag">{tech}</span>
+                      <span key={index} className="tech-tag">
+                        <img src={techIcons[tech]} alt={tech} className="tech-icon" />
+                        {tech}
+                      </span>
                     ))}
                   </div>
                   <div className="project-links">
