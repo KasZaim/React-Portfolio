@@ -27,6 +27,7 @@ import postmanIcon from '../../assets/images/icons/postman-icon.svg';
 import herokuIcon from '../../assets/images/icons/heroku-icon-svgrepo-com.svg';
 import googlecloudIcon from '../../assets/images/icons/google-cloud.svg';
 import scrumIcon from '../../assets/images/icons/scrum-svgrepo-com.svg';
+import reactIcon from '../../assets/images/icons/react.svg';  
 
 const Portfolio = () => {
   
@@ -103,7 +104,8 @@ const Portfolio = () => {
     'Postman': postmanIcon,
     'Heroku': herokuIcon,
     'Google Cloud': googlecloudIcon,
-    'Scrum': scrumIcon
+    'Scrum': scrumIcon,
+    'React': reactIcon
   };
 
   useEffect(() => {

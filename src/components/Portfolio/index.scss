@@ -188,11 +188,11 @@
                 overflow: hidden;
                 
                 &:first-child {
-                    background: rgba(36, 41, 46, 0.2);
-                    color: #24292e;
+                    background: #0366d6;
+                    color: #fff;
                     
                     &:hover {
-                        background: rgba(36, 41, 46, 0.4);
+                        background: #0556b3;
                     }
                 }
                 
@@ -215,7 +215,7 @@
                     background: linear-gradient(
                         to right,
                         transparent,
-                        rgba(255, 215, 0, 0.2),
+                        rgba(255, 255, 255, 0.2),
                         transparent
                     );
                     transition: all 0.4s ease;

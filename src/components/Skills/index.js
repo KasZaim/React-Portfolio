@@ -24,33 +24,35 @@ import postmanIcon from '../../assets/images/icons/postman-icon.svg';
 import herokuIcon from '../../assets/images/icons/heroku-icon-svgrepo-com.svg';
 import googlecloudIcon from '../../assets/images/icons/google-cloud.svg';
 import scrumIcon from '../../assets/images/icons/scrum-svgrepo-com.svg';
+import reactIcon from '../../assets/images/icons/react.svg';
 import arrowImage from '../../assets/images/arrow.svg';
 
 const Skills = () => {
     const [letterClass, setLetterClass] = useState('text-animate');
     const [loading, setLoading] = useState(true);
-
+    
     const skills = [
-        { name: 'Angular', icon: angularIcon, color: '#DD0031' },
-        { name: 'TypeScript', icon: typescriptIcon, color: '#3178C6' },
-        { name: 'JavaScript', icon: javascriptIcon, color: '#F7DF1E' },
-        { name: 'HTML', icon: htmlIcon, color: '#E34F26' },
-        { name: 'CSS', icon: cssIcon, color: '#1572B6' },
-        { name: 'Material Design', icon: materialIcon, color: '#757575' },
-        { name: 'Django', icon: djangoIcon, color: '#092E20' },
-        { name: 'Python', icon: pythonIcon, color: '#3776AB' },
-        { name: 'Rest-API', icon: restapiIcon, color: '#009688' },
-        { name: 'SQL', icon: sqlIcon, color: '#4479A1' },
-        { name: 'PostgreSQL', icon: postgresqlIcon, color: '#336791' },
-        { name: 'Redis', icon: redisIcon, color: '#DC382D' },
-        { name: 'Firebase', icon: firebaseIcon, color: '#FFCA28' },
-        { name: 'Docker', icon: dockerIcon, color: '#2496ED' },
-        { name: 'Git', icon: gitIcon, color: '#F05032' },
-        { name: 'Linux', icon: linuxIcon, color: '#FCC624' },
-        { name: 'Postman', icon: postmanIcon, color: '#FF6C37' },
-        { name: 'Heroku', icon: herokuIcon, color: '#430098' },
-        { name: 'Google Cloud', icon: googlecloudIcon, color: '#4285F4' },
-        { name: 'Scrum', icon: scrumIcon, color: '#6DB33F' }
+        { name: 'Angular', icon: angularIcon},
+        { name: 'TypeScript', icon: typescriptIcon},
+        { name: 'JavaScript', icon: javascriptIcon},
+        { name: 'React', icon: reactIcon},
+        { name: 'HTML', icon: htmlIcon },
+        { name: 'CSS', icon: cssIcon },
+        { name: 'Material Design', icon: materialIcon},
+        { name: 'Django', icon: djangoIcon },
+        { name: 'Python', icon: pythonIcon},
+        { name: 'Rest-API', icon: restapiIcon},
+        { name: 'SQL', icon: sqlIcon},
+        { name: 'PostgreSQL', icon: postgresqlIcon},
+        { name: 'Redis', icon: redisIcon},
+        { name: 'Firebase', icon: firebaseIcon},
+        { name: 'Git', icon: gitIcon},
+        { name: 'Linux', icon: linuxIcon},
+        { name: 'Postman', icon: postmanIcon},
+        { name: 'Heroku', icon: herokuIcon},
+        { name: 'Google Cloud', icon: googlecloudIcon},
+        { name: 'Scrum', icon: scrumIcon},
+        // { name: 'Docker', icon: dockerIcon},
     ];
 
     useEffect(() => {
