@@ -44,7 +44,7 @@ const Portfolio = () => {
       technologies: ['Angular', 'TypeScript', 'HTML', 'CSS', 'JavaScript'],
       image: require('../../assets/images/Join linkedin.jpg'),
       githubLink: 'https://github.com/yourusername/ecommerce',
-      liveLink: 'https://ecommerce-demo.com'
+      liveLink: 'https://join.kaser-mahmood.com/'
     },
     {
       id: 2,
