@@ -17,7 +17,6 @@ import sqlIcon from '../../assets/images/icons/sql.svg';
 import postgresqlIcon from '../../assets/images/icons/postgresql.svg';
 import redisIcon from '../../assets/images/icons/redis.svg';
 import firebaseIcon from '../../assets/images/icons/firebase.svg';
-import dockerIcon from '../../assets/images/icons/docker.svg';
 import gitIcon from '../../assets/images/icons/git.svg';
 import linuxIcon from '../../assets/images/icons/icons8-linux-24.png';
 import postmanIcon from '../../assets/images/icons/postman-icon.svg';
