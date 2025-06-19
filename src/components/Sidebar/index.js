@@ -2,14 +2,18 @@ import './index.scss'
 import LogoK from '../../assets/images/K.png'
 import LogoSubtitle from '../../assets/images/Kaser.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faUser,faEnvelope,faSuitcase, faCode } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faUser,faEnvelope,faSuitcase, faCode, faBars, faClose } from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink } from 'react-router-dom'
 import {
   faLinkedin,
   faGithub,
   
 } from '@fortawesome/free-brands-svg-icons'
+import { useState } from 'react'
+
+
 const Sidebar = () => {
+  const[showNav, setShowNav] = useState(false)
   return (
     <div className="nav-bar">
       <Link
@@ -18,7 +22,7 @@ const Sidebar = () => {
         <img src={LogoK} alt="Logo" />
         <img className="sub-logo" src={LogoSubtitle} alt="slobodan" />
       </Link>
-      <nav>
+      <nav className={showNav ? 'mobile-show' : ''}>
         <NavLink exact="true" activeclassname="active" to="/">
           <FontAwesomeIcon icon={faHome} color="#4d4d4e" />
         </NavLink>
@@ -34,6 +38,7 @@ const Sidebar = () => {
         <NavLink exact="true" className="contact-link" activeclassname="active" to="/contact">
           <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
         </NavLink>
+        <FontAwesomeIcon icon={faClose} color="ffd700" size="3x" className='close-icon' onClick={() => setShowNav(false)} />
       </nav>
       <ul>
         <li>
@@ -52,6 +57,7 @@ const Sidebar = () => {
           </a>
         </li>
       </ul>
+      <FontAwesomeIcon icon={faBars} color="#ffd700" size='3x' className='hamburger-icon' onClick={() => setShowNav(true)} />
     </div>
 
   )
