@@ -23,19 +23,19 @@ const Sidebar = () => {
         <img className="sub-logo" src={LogoSubtitle} alt="slobodan" />
       </Link>
       <nav className={showNav ? 'mobile-show' : ''}>
-        <NavLink exact="true" activeclassname="active" to="/">
+        <NavLink onClick={() => setShowNav(false)}  exact="true" activeclassname="active" to="/">
           <FontAwesomeIcon icon={faHome} color="#4d4d4e" />
         </NavLink>
-        <NavLink exact="true" className="about-link" activeclassname="active" to="/about">
+        <NavLink onClick={() => setShowNav(false)}  exact="true" className="about-link" activeclassname="active" to="/about">
           <FontAwesomeIcon icon={faUser} color="#4d4d4e" />
         </NavLink>
-        <NavLink exact="true" className="skills-link" activeclassname="active" to="/skills">
+        <NavLink onClick={() => setShowNav(false)}  exact="true" className="skills-link" activeclassname="active" to="/skills">
           <FontAwesomeIcon icon={faCode} color="#4d4d4e" />
         </NavLink>
-        <NavLink exact="true" className="portfolio-link" activeclassname="active" to="/portfolio">
+        <NavLink onClick={() => setShowNav(false)}  exact="true" className="portfolio-link" activeclassname="active" to="/portfolio">
           <FontAwesomeIcon icon={faSuitcase} color="#4d4d4e" />
         </NavLink>
-        <NavLink exact="true" className="contact-link" activeclassname="active" to="/contact">
+        <NavLink onClick={() => setShowNav(false)}  exact="true" className="contact-link" activeclassname="active" to="/contact">
           <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
         </NavLink>
         <FontAwesomeIcon icon={faClose} color="ffd700" size="3x" className='close-icon' onClick={() => setShowNav(false)} />
