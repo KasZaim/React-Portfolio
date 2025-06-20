@@ -40,9 +40,7 @@ const About = () => {
                         <p>
                         Hello! I'm Kaser, an aspiring software developer from Elmshorn, near Hamburg. My journey in technology began in the transportation industry, leading me to pursue advanced training in software development at the Developer Academy in Munich. This experience has not only honed my technical skills, but also nurtured my innovative thinking.
                         </p>
-                        <p>
-                        My background in transportation has given me a unique perspective on efficiency and logistics, which I now apply to software development. I'm fascinated by the potential of technology to improve lives and streamline processes, especially at the intersection of software development and transportation.
-                        </p>
+                        
                         <p>
                         I'm actively seeking opportunities to apply my skills in a forward-thinking team. With a passion for technology and a unique professional background, I'm excited to contribute to impactful projects and continue growing as a developer.
                         </p>
