@@ -4,7 +4,7 @@
 
 **Current State:**
 - React portfolio with modern styling using SCSS
-- Color scheme: Primary gold (#ffd700), dark background (#022c43, #181818), white text
+- Color scheme: Primary gold (#ffd700), dark background (#022c43, #ffd700), white text
 - Components: Home, About, Contact, Portfolio, Skills, Sidebar
 - Some mobile responsive features exist (1200px breakpoint)
 - Custom fonts: Coolvetica, La Belle Aurore, Helvetica Neue
@@ -46,7 +46,7 @@
 - [ ] **TASK-018**: Performance optimization and final adjustments
 
 ## Design Principles
-1. **Maintain existing color scheme**: #ffd700 (gold), #022c43/#181818 (dark), white text
+1. **Maintain existing color scheme**: #ffd700 (gold), #022c43/#ffd700 (dark), white text
 2. **Keep minimal changes**: Focus on responsive improvements only
 3. **Preserve animations**: Ensure they work well across devices
 4. **Mobile-first approach**: Start with mobile and scale up

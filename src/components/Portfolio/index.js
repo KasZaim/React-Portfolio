@@ -11,7 +11,7 @@ import angularIcon from '../../assets/images/icons/angular.svg';
 import typescriptIcon from '../../assets/images/icons/typescript.svg';
 import javascriptIcon from '../../assets/images/icons/javascript.svg';
 import htmlIcon from '../../assets/images/icons/html.svg';
-import cssIcon from '../../assets/images/icons/sass.svg';
+import scssIcon from '../../assets/images/icons/sass.svg';
 import materialIcon from '../../assets/images/icons/material-design.svg';
 import djangoIcon from '../../assets/images/icons/django.svg';
 import pythonIcon from '../../assets/images/icons/python.svg';
@@ -39,19 +39,19 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Website',
-      description: 'A full-stack e-commerce platform with user authentication, product search, and payment integration.',
-      technologies: ['Angular', 'TypeScript', 'HTML', 'CSS', 'JavaScript'],
-      image: require('../../assets/images/Join linkedin.jpg'),
+      title: 'Videoflix',
+      description: 'Videoflix ist eine moderne Full-Stack-Streaming-Plattform im Stil von Netflix mit Benutzer-Authentifizierung, intuitiver Bedienung und hochauflösender Wiedergabe auf allen Geräten.',
+      technologies: ['Angular', 'Django', 'TypeScript', 'SCSS', ,'HTML', 'JavaScript'],
+      image: require('../../assets/images/videoflix preview.mp4'),
       githubLink: 'https://github.com/yourusername/ecommerce',
-      liveLink: 'https://join.kaser-mahmood.com/'
+      liveLink: 'https://videoflix.kaserm.dev/'
     },
     {
       id: 2,
       title: 'Weather App',
       description: 'A weather application that shows current conditions and forecasts based on user location.',
       technologies: ['React', 'OpenWeather API', 'CSS3'],
-      image: require('../../assets/images/Join linkedin.jpg'),
+      image: require('../../assets/images/videoflix preview.mp4'),
       githubLink: 'https://github.com/yourusername/weather-app',
       liveLink: 'https://weather-app-demo.com'
     },
@@ -60,7 +60,7 @@ const Portfolio = () => {
       title: 'Task Management Tool',
       description: 'A Trello-like application for managing projects and tasks with drag-and-drop functionality.',
       technologies: ['React', 'Redux', 'Firebase', 'Material UI'],
-      image: require('../../assets/images/Join linkedin.jpg'),
+      image: require('../../assets/images/videoflix preview.mp4'),
       githubLink: 'https://github.com/yourusername/task-manager',
       liveLink: 'https://task-manager-demo.com'
     },
@@ -69,19 +69,11 @@ const Portfolio = () => {
       title: 'Recipe Finder',
       description: 'An application to discover and save recipes based on ingredients you have at home.',
       technologies: ['React', 'Spoonacular API', 'Styled Components'],
-      image: require('../../assets/images/Join linkedin.jpg'),
+      image: require('../../assets/images/videoflix preview.mp4'),
       githubLink: 'https://github.com/yourusername/recipe-finder',
       liveLink: 'https://recipe-finder-demo.com'
     },
-    {
-        id: 5,
-        title: 'Recipe Finder',
-        description: 'An application to discover and save recipes based on ingredients you have at home.',
-        technologies: ['React', 'Spoonacular API', 'Styled Components'],
-        image: require('../../assets/images/Join linkedin.jpg'),
-        githubLink: 'https://github.com/yourusername/recipe-finder',
-        liveLink: 'https://recipe-finder-demo.com'
-    }
+    
   ];
 
   const techIcons = {
@@ -89,7 +81,7 @@ const Portfolio = () => {
     'TypeScript': typescriptIcon,
     'JavaScript': javascriptIcon,
     'HTML': htmlIcon,
-    'CSS': cssIcon,
+    'SCSS': scssIcon,
     'Material Design': materialIcon,
     'Django': djangoIcon,
     'Python': pythonIcon,
@@ -164,7 +156,7 @@ const Portfolio = () => {
             {projects.map((project) => (
               <div className="project-card" key={project.id}>
                 <div className="project-image">
-                  <img src={project.image} alt={project.title} />
+                  <video src={project.image} alt={project.title} width="100%" height="100%" autoPlay loop muted playsInline style={{objectFit: 'cover'}} />
                 </div>
                 <div className="project-content">
                   <h3 className="project-title">{project.title}</h3>
