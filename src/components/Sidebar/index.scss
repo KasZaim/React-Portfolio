@@ -129,17 +129,17 @@
         transition: all 0.3s ease-out;
 
         &:hover {
-          color: #F46C39;
+          color: #FFFFFF;
           
           svg {
-            color: #F46C39;
+            color: #FFFFFF;
           }
         }
       }
 
       &:hover svg {
         .anchor-icon {
-          color: #F46C39
+          color: #FFFFFF
         }
       }
     }

@@ -209,6 +209,10 @@
                     
                     &:hover {
                         background: #0556b3;
+                        
+                        svg {
+                            color: #FFFFFF !important;
+                        }
                     }
                 }
                 
@@ -308,5 +312,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #022c43;
+    background: #151312;
 }

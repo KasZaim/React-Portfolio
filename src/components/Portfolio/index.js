@@ -171,7 +171,7 @@ const Portfolio = () => {
                   </div>
                   <div className="project-links">
                     <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="btn-link">
-                      <FontAwesomeIcon icon={faGithub} /> Code
+                      <FontAwesomeIcon icon={faGithub} color="#F46C39" /> Code
                     </a>
                     <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="btn-link">
                       <FontAwesomeIcon icon={faEye} /> Demo

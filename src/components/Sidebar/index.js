@@ -43,17 +43,17 @@ const Sidebar = () => {
       <ul>
         <li>
           <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/kaser-mahmood/">
-            <FontAwesomeIcon icon={faLinkedin} color="#4d4d4e" />
+            <FontAwesomeIcon icon={faLinkedin} color="#F46C39" />
           </a>
         </li>
         <li>
           <a target="_blank" rel="noreferrer" href="https://github.com/KasZaim">
-            <FontAwesomeIcon icon={faGithub} color="#4d4d4e" />
+            <FontAwesomeIcon icon={faGithub} color="#F46C39" />
           </a>
         </li>
         <li>
           <a target="_blank" rel="noreferrer" href="mailto:kaser@live.de">
-            <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
+            <FontAwesomeIcon icon={faEnvelope} color="#F46C39" />
           </a>
         </li>
       </ul>
