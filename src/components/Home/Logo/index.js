@@ -11,35 +11,62 @@ const Logo = () => {
   const [showImage, setShowImage] = useState(false)
 
   useEffect(() => {
-    // Initial state
-    gsap.set(outlineLogoRef.current, {
-      strokeDasharray: 2000,
-      strokeDashoffset: 2000
-    })
-
-    // Create timeline
-    const tl = gsap.timeline({
-      defaults: { ease: "power3.inOut" }
-    })
-
-    tl.to(bgRef.current, {
-      duration: 1,
-      opacity: 1,
-    })
-    .to(outlineLogoRef.current, {
-      duration: 3,
-      strokeDashoffset: 0,
-    })
-    .to(solidLogoRef.current, {
-      duration: 1,
-      opacity: 1,
-      onComplete: () => {
-        setTimeout(() => {
-          setShowImage(true)
-        }, 2000)
+    // Add a small delay to ensure DOM elements are fully rendered
+    const timeoutId = setTimeout(() => {
+      console.log('Starte Animation', {
+        bgRef: bgRef.current,
+        outlineLogoRef: outlineLogoRef.current,
+        solidLogoRef: solidLogoRef.current
+      });
+      // Check if all refs are available
+      if (!bgRef.current || !outlineLogoRef.current || !solidLogoRef.current) {
+        console.warn('Logo refs not available, skipping animation')
+        return
       }
-    })
+
+      // Initial state
+      gsap.set(outlineLogoRef.current, {
+        strokeDasharray: 2000,
+        strokeDashoffset: 2000
+      })
+
+      // Create timeline
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.inOut" }
+      })
+
+      tl.to(bgRef.current, {
+        duration: 1,
+        opacity: 1,
+      })
+      .to(outlineLogoRef.current, {
+        duration: 3,
+        strokeDashoffset: 0,
+      })
+      .to(solidLogoRef.current, {
+        duration: 1,
+        opacity: 1,
+        onComplete: () => {
+          console.log('Solid Logo eingeblendet, setze showImage in 2s');
+          setTimeout(() => {
+            setShowImage(true)
+          }, 2000)
+        }
+      })
+
+      // Cleanup function
+      return () => {
+        tl.kill()
+      }
+    }, 100) // Small delay to ensure DOM is ready
+
+    // Cleanup timeout on unmount
+    return () => {
+      clearTimeout(timeoutId)
+    }
   }, [])
+
+  console.log('showImage:', showImage);
 
   return (
     <div className="logo-container" ref={bgRef}>

@@ -94,5 +94,39 @@
 **Result**: Fixed profile picture layout with proper spacing and image display. The inner colored rectangle now has equal margins (20px desktop, 15px mobile) from all sides of the white container. Changed `object-fit: cover` to `object-fit: contain` to show the complete image without cropping. The profile image now displays fully within the #A52401 colored rectangle with proper proportions and equal spacing on all sides.
 
 ---
+
+### Latest Task: Logo Animation Bug Fix (2025-07-09)
+
+**Problem**: The logo animation in the Home component is not working. The GSAP stroke-dash animation that should draw the logo outline is not visible.
+
+**Root Cause Analysis**:
+After examining the code, I found the following potential issues:
+1. **GSAP Animation Timing Issue**: The useEffect with GSAP animations might be running before the DOM elements are fully rendered
+2. **Ref Initialization**: The refs (bgRef, outlineLogoRef, solidLogoRef) might not be properly initialized when the animation starts
+3. **Missing Error Handling**: No validation to ensure refs are available before animating
+
+**Solution Strategy**:
+1. Add proper ref validation before running GSAP animations
+2. Add a small delay to ensure DOM elements are fully rendered
+3. Add error handling for GSAP animations
+4. Ensure the animation timeline is properly cleaned up
+
+**Todo List**:
+- [x] Examine logo component files to understand the animation structure
+- [x] Check CSS/SCSS files for animation styles  
+- [x] Identify the specific animation bug and root cause
+- [x] Fix the animation issue by adding proper error handling and ref checks
+- [x] Test the fix to ensure animation works correctly
+
+**Changes Made**:
+- Added proper ref validation before running GSAP animations
+- Added 100ms delay to ensure DOM elements are fully rendered
+- Added error handling with console warning if refs are not available
+- Added proper cleanup for GSAP timeline to prevent memory leaks
+- Added timeout cleanup on component unmount
+
+**Result**: Fixed the logo animation timing issue. The animation now properly waits for DOM elements to be rendered before starting, includes error handling, and has proper cleanup.
+
+---
 **Project Status**: Planning Phase - Awaiting Approval
 **Next Step**: Review and approve this plan before beginning implementation

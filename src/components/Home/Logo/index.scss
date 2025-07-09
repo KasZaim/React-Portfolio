@@ -1,6 +1,6 @@
 .logo-container {
-  z-index: 0;
-  width: auto;
+  z-index:0;
+  width: 400px;
   height: 600px;
   opacity: 0;
   position: absolute;
@@ -37,7 +37,6 @@
     border-radius: 15px;
     opacity: 0;
     animation: fadeInScale 2s ease-in-out forwards, pulse 4s ease-in-out infinite;
-    box-shadow: 0 0 30px rgba(#00F050, 0.3);
     padding: 20px;
     
     .profile-image-container {
