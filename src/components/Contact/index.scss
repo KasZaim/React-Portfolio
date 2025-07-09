@@ -57,21 +57,21 @@
             }
 
             .flat-button{
-                color: #ffd700;
+                color: #00F050;
                 font-size: 13px;
                 letter-spacing: 3px;
                 background: 0 0;
                 text-decoration: none;
                 padding: 8px 10px;
                 font-size: 15px;
-                border: 1px solid #ffd700;
+                border: 1px solid #00F050;
                 float: right;
                 border-radius: 4px;
                 cursor: pointer;
                 transition: 0.3s ease-in-out;
 
                 &:hover{
-                    background: #ffd700;
+                    background: #00F050;
                     color: #333;
                 }
                 
@@ -99,7 +99,7 @@
 
         span{
             font-size: 16px;
-            color: #ffd700;
+            color: #00F050;
             display: block;
             padding-top: 20px;
         }

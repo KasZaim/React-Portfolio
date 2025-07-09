@@ -38,7 +38,7 @@ const Sidebar = () => {
         <NavLink onClick={() => setShowNav(false)}  exact="true" className="contact-link" activeclassname="active" to="/contact">
           <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
         </NavLink>
-        <FontAwesomeIcon icon={faClose} color="ffd700" size="3x" className='close-icon' onClick={() => setShowNav(false)} />
+        <FontAwesomeIcon icon={faClose} color="00F050" size="3x" className='close-icon' onClick={() => setShowNav(false)} />
       </nav>
       <ul>
         <li>
@@ -57,7 +57,7 @@ const Sidebar = () => {
           </a>
         </li>
       </ul>
-      <FontAwesomeIcon icon={faBars} color="#ffd700" size='3x' className='hamburger-icon' onClick={() => setShowNav(true)} />
+      <FontAwesomeIcon icon={faBars} color="#00F050" size='3x' className='hamburger-icon' onClick={() => setShowNav(true)} />
     </div>
 
   )

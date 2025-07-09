@@ -11,7 +11,7 @@
         margin-bottom: 40px;
         font-size: 45px;
         font-family: 'Coolvetica';
-        color: #ffd700;
+        color: #00F050;
         font-weight: 400;
         max-width: 200px;
         left: 6%;
@@ -117,7 +117,7 @@
         .project-title {
             font-size: 18px;
             margin-bottom: 8px;
-            color: #ffd700;
+            color: #00F050;
             font-weight: 500;
             position: relative;
             padding-bottom: 8px;
@@ -129,7 +129,7 @@
                 bottom: 0;
                 width: 25px;
                 height: 2px;
-                background: #ffd700;
+                background: #00F050;
                 transition: width 0.3s ease;
             }
         }
@@ -163,7 +163,7 @@
                 padding: 4px 8px;
                 border-radius: 15px;
                 background: rgba(255, 215, 0, 0.1);
-                color: #ffd700;
+                color: #00F050;
                 font-size: 11px;
                 font-weight: 500;
                 transition: all 0.3s ease;
@@ -214,7 +214,7 @@
                 
                 &:last-child {
                     background: rgba(255, 215, 0, 0.2);
-                    color: #ffd700;
+                    color: #00F050;
                     
                     &:hover {
                         background: rgba(255, 215, 0, 0.3);

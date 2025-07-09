@@ -10,14 +10,13 @@ const Home = () => {
     const [letterClass, setLetterClass] = useState('text-animate');
     const [loading, setLoading] = useState(true);
     const nameArray = ['a', 's', 'e', 'r'];
-    const jobArray = ['S', 'o', 'f','t','w','a','r','e', ' ', 'd', 'e', 'v', 'e', 'l', 'o', 'p', 'e', 'r'];
+    const jobArray = ['S', 'O', 'F', 'T', 'W', 'A', 'R', 'E', ' ', 'E', 'N', 'T', 'W', 'I', 'C', 'K', 'L', 'E', 'R'];
     
     useEffect(() => {
         setTimeout(() => {
             setLetterClass('text-animate-hover');
-        }, 1000);
+        }, 5000);
 
-        // Set loading to false after content is loaded
         setTimeout(() => {
             setLoading(false);
         }, 1000);
@@ -36,8 +35,13 @@ const Home = () => {
                             <span className={letterClass}>H </span>
                             <span className={`${letterClass} _12`}>i, </span>
                             <br />
-                            <span className={`${letterClass} _13`}>I </span>
-                            <span className={`${letterClass} _14`}>'m, </span>
+                            <span className={`${letterClass} _13`}>i </span>
+                            <span className={`${letterClass} _14`}>c </span>
+                            <span className={`${letterClass} _14`}>h </span>
+                            <span className={`${letterClass} _14`}></span>
+                            <span className={`${letterClass} _14`}>b </span>
+                            <span className={`${letterClass} _14`}>i </span>
+                            <span className={`${letterClass} _14`}>n </span>
                             <img src={LogoK} alt="developer" />
                             <AnimatedLetters
                                 letterClass={letterClass}
@@ -49,10 +53,11 @@ const Home = () => {
                                 letterClass={letterClass}
                                 strArray={jobArray}
                                 idx={19}
+                                spanStyle={{ color: '#353334' }}
                             />
                         </h1>
                         <h2>
-                            I'm a full-stack developer / JavaScript Expert 
+                            Full-stack Entwickler / JavaScript Experte 
                         </h2>
                         <Link to="/contact" className="flat-button">Contact me</Link>
                     </div>

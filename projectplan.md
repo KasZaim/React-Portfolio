@@ -4,7 +4,7 @@
 
 **Current State:**
 - React portfolio with modern styling using SCSS
-- Color scheme: Primary gold (#ffd700), dark background (#022c43, #ffd700), white text
+- Color scheme: Primary gold (#00F050), dark background (#022c43, #181818), white text
 - Components: Home, About, Contact, Portfolio, Skills, Sidebar
 - Some mobile responsive features exist (1200px breakpoint)
 - Custom fonts: Coolvetica, La Belle Aurore, Helvetica Neue
@@ -46,7 +46,7 @@
 - [ ] **TASK-018**: Performance optimization and final adjustments
 
 ## Design Principles
-1. **Maintain existing color scheme**: #ffd700 (gold), #022c43/#ffd700 (dark), white text
+1. **Maintain existing color scheme**: #00F050 (gold), #022c43/#181818 (dark), white text
 2. **Keep minimal changes**: Focus on responsive improvements only
 3. **Preserve animations**: Ensure they work well across devices
 4. **Mobile-first approach**: Start with mobile and scale up
@@ -71,7 +71,27 @@
 ```
 
 ## Review Section
-*[To be completed after implementation]*
+
+### Latest Task: Change Profile Picture to Horizontal Rectangle Design (2025-07-09)
+
+**Problem**: User wanted to change the circular profile picture to a horizontal rectangle with white background and rounded corners.
+
+**Solution**: Redesigned the profile picture container and image styling to create a modern card-like appearance.
+
+**Changes Made**:
+- Updated `.profile-pic` styling in `src/components/Home/Logo/index.scss`:
+  - Changed from circular (380x380px, border-radius: 50%) to horizontal rectangle (450x300px, border-radius: 15px)
+  - Added white background with padding (20px)
+  - Used CSS `::before` pseudo-element for the actual image display
+  - Applied `background-image` with `background-size: cover` for proper scaling
+  - Added inner rounded corners (10px) for the image
+  - Reduced green glow effect intensity (0.3 opacity)
+- Updated mobile responsive styles:
+  - Adjusted dimensions to 300x200px for mobile
+  - Maintained proportional padding and border-radius
+  - Kept proper centering and positioning
+
+**Result**: Fixed profile picture layout with proper spacing and image display. The inner colored rectangle now has equal margins (20px desktop, 15px mobile) from all sides of the white container. Changed `object-fit: cover` to `object-fit: contain` to show the complete image without cropping. The profile image now displays fully within the #A52401 colored rectangle with proper proportions and equal spacing on all sides.
 
 ---
 **Project Status**: Planning Phase - Awaiting Approval

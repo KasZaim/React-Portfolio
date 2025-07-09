@@ -4,19 +4,19 @@
     animation: bounceIn 1s 1s;
     animation-fill-mode: forwards;
     min-width: 10px;
-    color: #ffd700;
+    color: #00F050;
 }
 
 .text-animate-hover{
     display: inline-block;
     animation-fill-mode: both;
     min-width: 10px;
-    color: #ffd700;
+    color: #FFFFFF;
     transition: color 0.3s ease;
 
     &:hover{
         animation: rubberBand 1s;
-        color: #fff;
+        color: #00F050;
     }
 }
 

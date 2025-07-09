@@ -9,15 +9,16 @@
         
     }
     h1{
-        color: #fff;
+        color: #ffffff;
         font-size: 53px;
         margin: 0;
-        font-family: 'Coolvetica';
-        font-weight: 400;
+        // font-family: 'Coolvetica';
+        font-family: 'Poppins', sans-serif;
+        font-weight: 800;
 
         .text-animate {
             display: inline-block;
-            opacity: 0;
+        opacity: 0;
             animation: bounceIn 1s 1s;
             animation-fill-mode: forwards;
             min-width: 10px;
@@ -31,8 +32,9 @@
 
         &::before{
             content: '<h1>';
-            font-family: 'La Belle Aurore', cursive;
-            color: #ffd700;
+            font-family: 'JetBrains Mono', cursive;
+            font-weight: 600;
+            color: #FFFFFF;
             font-size: 18px;
             position: absolute;
             margin-top: -40px;
@@ -41,8 +43,9 @@
         }
         &::after{
             content: '</h1>';
-            font-family: 'La Belle Aurore', cursive;
-            color: #ffd700;
+            font-family: 'JetBrains Mono', cursive;
+            font-weight: 600;
+            color: #FFFFFF;
             font-size: 18px;
             position: absolute;
             margin-top: 18px;
@@ -63,27 +66,27 @@
         color: #8d8d8d;
         margin-top: 20px;
         font-weight: 600;
-        font-size: 11px;
+        font-size: 13px;
         font-family: sans-serif;
         letter-spacing: 3px;
         animation: fadeIn 1s 1.8s backwards;
     }
     .flat-button{
-        color: #ffd700;
+        color: #00F050;
         font-size: 13px;
         font-weight: 400;
         letter-spacing: 4px;
         font-family: sans-serif;
         text-decoration: none;
         padding: 10px 18px;
-        border: 1px solid #ffd700;
+        border: 1px solid #00F050;
         margin-top: 25px;
         float: left;
         animation: fadeIn 1s 1.8s backwards;
         white-space: nowrap;
         transition: all 0.3s ease-out;
         &:hover{
-            background: #ffd700;
+            background: #00F050;
             color: #333;
         }
     }
