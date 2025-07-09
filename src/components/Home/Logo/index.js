@@ -4,11 +4,51 @@ import LogoSVG from '../../../assets/images/K.svg'
 import ProfileImage from '../../../assets/images/profilbild.png'
 import './index.scss'
 
+// Custom hook for counting animation
+const useCountAnimation = (targetValue, duration = 2000, delay = 0) => {
+  const [count, setCount] = useState(0)
+  const [hasStarted, setHasStarted] = useState(false)
+
+  const startCounting = () => {
+    if (hasStarted) return
+    setHasStarted(true)
+    
+    setTimeout(() => {
+      const startTime = Date.now()
+      const animate = () => {
+        const elapsed = Date.now() - startTime
+        const progress = Math.min(elapsed / duration, 1)
+        
+        // Easing function for smooth animation
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4)
+        const currentValue = Math.floor(easeOutQuart * targetValue)
+        
+        setCount(currentValue)
+        
+        if (progress < 1) {
+          requestAnimationFrame(animate)
+        } else {
+          setCount(targetValue)
+        }
+      }
+      animate()
+    }, delay)
+  }
+
+  return [count, startCounting]
+}
+
 const Logo = () => {
   const bgRef = useRef()
   const outlineLogoRef = useRef()
   const solidLogoRef = useRef()
   const [showImage, setShowImage] = useState(false)
+  const [showStats, setShowStats] = useState(false)
+  
+  // Counting hooks
+  const [yearsCount, startYearsCount] = useCountAnimation(3, 2000, 0)
+  const [projectsCount, startProjectsCount] = useCountAnimation(10, 2000, 500)
+  const [hoursCount, startHoursCount] = useCountAnimation(10, 2000, 1000)
 
   useEffect(() => {
     // Add a small delay to ensure DOM elements are fully rendered
@@ -50,6 +90,13 @@ const Logo = () => {
           console.log('Solid Logo eingeblendet, setze showImage in 2s');
           setTimeout(() => {
             setShowImage(true)
+            // Start stats animation after profile image is shown
+            setTimeout(() => {
+              setShowStats(true)
+              startYearsCount()
+              startProjectsCount()
+              startHoursCount()
+            }, 500)
           }, 2000)
         }
       })
@@ -103,6 +150,22 @@ const Logo = () => {
           <div className="profile-image-container">
             <img src={ProfileImage} alt="Kaser Mahmood" />
           </div>
+          {showStats && (
+            <div className="stats-container">
+              <div className="stat-item">
+                <div className="stat-number">+{yearsCount}</div>
+                <div className="stat-label">Years of Experience</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">+{projectsCount}</div>
+                <div className="stat-label">Projects Built</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">+{hoursCount}k</div>
+                <div className="stat-label">Hours Worked</div>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

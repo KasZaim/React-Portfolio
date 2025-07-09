@@ -128,5 +128,30 @@ After examining the code, I found the following potential issues:
 **Result**: Fixed the logo animation timing issue. The animation now properly waits for DOM elements to be rendered before starting, includes error handling, and has proper cleanup.
 
 ---
+
+### Latest Task: Change Pacman Loader Color to #00F050 (2025-07-09)
+
+**Problem**: The Pacman loader is currently white in color, but needs to be changed to #00F050 (bright green).
+
+**Analysis**: 
+- Pacman loader is imported from `loaders.css` package via `@import '~loaders.css/src/animations/pacman.scss';` in App.scss
+- The loader is used consistently across all components (Home, About, Portfolio, Skills, Contact)
+- Current loader container has a #DEDEDE background
+- Need to override the default Pacman loader colors
+
+**Todo List**:
+- [ ] Research the default Pacman loader CSS structure to understand which properties to override
+- [ ] Add custom CSS to override the Pacman loader colors to #00F050
+- [ ] Test the changes to ensure the loader appears in the correct color
+- [ ] Verify the color change works across all components
+
+**Implementation Strategy**:
+1. Add custom CSS overrides in App.scss after the loader import
+2. Target the specific CSS classes used by the Pacman loader
+3. Set the color to #00F050 using appropriate CSS properties
+
+**Expected Changes**: Minimal code changes - only CSS overrides needed, no component logic changes required, single file modification (App.scss)
+
+---
 **Project Status**: Planning Phase - Awaiting Approval
 **Next Step**: Review and approve this plan before beginning implementation
