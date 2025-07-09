@@ -1,6 +1,21 @@
 @import 'animate.css';
 @import '~loaders.css/src/animations/pacman.scss';
 
+// Custom Pacman loader color override
+.pacman > div:first-of-type,
+.pacman > div:nth-child(2) {
+  border-top-color: #00F050 !important;
+  border-left-color: #00F050 !important;
+  border-bottom-color: #00F050 !important;
+}
+
+.pacman > div:nth-child(3),
+.pacman > div:nth-child(4),
+.pacman > div:nth-child(5),
+.pacman > div:nth-child(6) {
+  background-color: #00F050 !important;
+}
+
 @font-face {
   font-family: 'Helvetica Neue';
   src: url('./assets/fonts/helvetica-neu.ttf') format('ttf');
