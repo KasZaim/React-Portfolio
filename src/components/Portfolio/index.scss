@@ -9,20 +9,21 @@
     h1.page-title {
         margin-top: 80px;
         margin-bottom: 40px;
-        font-size: 45px;
-        font-family: 'Coolvetica';
+        font-size: 72px;
+        font-family: 'Poppins';
         color: #00F050;
-        font-weight: 400;
+        font-weight: 800;
         max-width: 200px;
         left: 6%;
         padding-left: 15px;
+        white-space: nowrap;
     }
 
     .projects-container {
         display: flex       ;
         flex-wrap: wrap;
         flex-direction: row;
-        gap: 20px;
+        gap: 100px;
         margin-bottom: 60px;
         opacity: 0;
         transition: opacity 0.5s ease;
@@ -37,7 +38,6 @@
         border-radius: 20px;
         overflow: hidden;
         border: 3px solid transparent;
-        background: #012c43;
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
         width: 340px;
         height: 480px;

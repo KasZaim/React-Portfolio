@@ -27,7 +27,7 @@
 
         .hover-text {
             color: #00F050;
-            font-family: 'Coolvetica';
+            font-family: 'Poppins';
             font-size: 1.2em;
             text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
             animation: glowText 2s ease-in-out infinite;
@@ -59,10 +59,11 @@
     .text-zone {
 
         h1 {
-            font-size: 53px;
-            font-family: 'Coolvetica';
+            font-size: 72px;
+            font-family: 'Poppins';
+            font-weight: 800;
+            letter-spacing: 3px;
             color: #00F050;
-            font-weight: 400;
             margin-top: 0;
             position: relative;
             margin-bottom: 40px;
@@ -70,7 +71,7 @@
 
             &::before {
                 content: '<h1>';
-                font-family: 'La Belle Aurore';
+                font-family: 'JetBrains Mono';
                 font-size: 18px;
                 position: absolute;
                 margin-top: -10px;
@@ -93,10 +94,11 @@
         }
 
         .description {
-            color: #fff;
+            color: #dedede;
             font-size: 16px;
-            font-family: sans-serif;
+            font-family: Poppins;
             margin-bottom: 30px;
+            font-weight: 600;
             opacity: 0;
             animation: fadeIn 1s 1.5s;
             animation-fill-mode: forwards;
