@@ -39,18 +39,24 @@
     }
 
     @keyframes floatArrow {
-        0%, 100% {
+
+        0%,
+        100% {
             transform: rotate(-15deg) translateY(0);
         }
+
         50% {
             transform: rotate(-15deg) translateY(-10px);
         }
     }
 
     @keyframes glowText {
-        0%, 100% {
+
+        0%,
+        100% {
             text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
         }
+
         50% {
             text-shadow: 0 0 10px rgba(255, 215, 0, 1);
         }
@@ -64,6 +70,7 @@
             font-weight: 800;
             letter-spacing: 3px;
             color: #00F050;
+            white-space: nowrap;
             margin-top: 0;
             position: relative;
             margin-bottom: 40px;
@@ -164,19 +171,23 @@
                         &.spinner {
                             animation: spin 1s ease-in-out;
                         }
+
                         &.bounce {
                             animation: bounce 1s ease-in-out;
                             transform-origin: bottom;
                         }
+
                         &.flip {
                             animation: flip 1s ease-in-out;
                             transform-origin: center;
                         }
+
                         &.pulse {
                             animation: pulse 1s ease-in-out;
                             transform-origin: center;
                         }
                     }
+
                     .skill-name {
                         color: #00F050;
                         transform: scale(1.1);
@@ -209,6 +220,7 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -219,15 +231,19 @@
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
 }
 
 @keyframes bounce {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
@@ -237,6 +253,7 @@
     0% {
         transform: perspective(1000px) rotateX(0deg);
     }
+
     100% {
         transform: perspective(1000px) rotateX(360deg);
     }
@@ -246,18 +263,35 @@
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.1);
     }
+
     100% {
         transform: scale(1);
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
+    .skills-page {
+
+        .text-zone h1 {
+            font-size: 64px;
+
+        }
+
+        .right-zone {
+            max-width: 500px;
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
     .skills-page {
         flex-direction: column;
-        padding: 80px 0;
+        justify-content: center;
+        align-items: center;
 
         .text-zone {
             width: 100%;
@@ -265,34 +299,55 @@
             left: 0;
             top: 0;
             transform: none;
-            margin-bottom: 50px;
+            max-width: 800px;
+
+            .description {
+                margin-bottom: 0;
+            }
         }
 
         .right-zone {
             width: 100%;
-            max-width: 100%;
+            max-width: 800px;
             height: auto;
             position: relative;
             right: 0;
             top: 0;
             transform: none;
-            margin-top: 30px;
 
             .skills-container {
                 gap: 20px;
+
                 .skill-box {
                     width: calc(25% - 20px);
                 }
             }
         }
     }
+    .arrow-container{
+      display: none !important;
+    }
 }
+
+
 
 @media screen and (max-width: 768px) {
     .skills-page {
+        p{
+            font-size: 15px !important;
+        }
+        .text-zone h1 {
+            font-size: 50px;
+
+            
+        }
+
         .right-zone {
+            max-width: 550px;
+
             .skills-container {
-                gap: 15px;
+                gap: 10px;
+
                 .skill-box {
                     width: calc(33.333% - 15px);
                 }
@@ -306,6 +361,7 @@
         .right-zone {
             .skills-container {
                 gap: 10px;
+
                 .skill-box {
                     width: calc(50% - 10px);
                 }
