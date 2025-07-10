@@ -1,6 +1,6 @@
 import Loader from 'react-loaders';
 import './index.scss'
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import AnimatedLetters from '../AnimatedLetters';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -36,10 +36,12 @@ const Portfolio = () => {
   const [projectsVisible, setProjectsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isRotating, setIsRotating] = useState(false);
+  const [currentTitle, setCurrentTitle] = useState('');
   const projectsRef = useRef(null);
   const carouselRef = useRef(null);
+  const titleRef = useRef(null);
 
-  const projects = [
+  const projects = useMemo(() => [
     {
       id: 1,
       title: 'Videoflix',
@@ -76,8 +78,7 @@ const Portfolio = () => {
       githubLink: 'https://github.com/yourusername/recipe-finder',
       liveLink: 'https://recipe-finder-demo.com'
     },
-    
-  ];
+  ], []);
 
   const techIcons = {
     'Angular': angularIcon,
@@ -104,10 +105,30 @@ const Portfolio = () => {
   };
 
   // 3D Carousel Functions
-  const rotateCarousel = (newIndex) => {
+  const rotateCarousel = useCallback((newIndex) => {
     if (isRotating) return;
     
     setIsRotating(true);
+    
+    // Animate title change
+    if (titleRef.current) {
+      gsap.to(titleRef.current, {
+        opacity: 0,
+        y: -20,
+        duration: 0.3,
+        ease: "power2.out",
+        onComplete: () => {
+          setCurrentTitle(projects[newIndex].title);
+          gsap.to(titleRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: "power2.out"
+          });
+        }
+      });
+    }
+    
     setCurrentIndex(newIndex);
     
     if (carouselRef.current) {
@@ -119,17 +140,17 @@ const Portfolio = () => {
         onComplete: () => setIsRotating(false)
       });
     }
-  };
+  }, [isRotating, projects, carouselRef, titleRef]);
 
-  const nextProject = () => {
+  const nextProject = useCallback(() => {
     const newIndex = (currentIndex + 1) % projects.length;
     rotateCarousel(newIndex);
-  };
+  }, [currentIndex, projects.length, rotateCarousel]);
 
-  const prevProject = () => {
+  const prevProject = useCallback(() => {
     const newIndex = currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
     rotateCarousel(newIndex);
-  };
+  }, [currentIndex, projects.length, rotateCarousel]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -143,7 +164,7 @@ const Portfolio = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentIndex]);
+  }, [prevProject, nextProject]);
 
   // Touch/Swipe support
   useEffect(() => {
@@ -181,7 +202,7 @@ const Portfolio = () => {
         carousel.removeEventListener('touchend', handleTouchEnd);
       };
     }
-  }, [currentIndex]);
+  }, [prevProject, nextProject]);
 
   useEffect(() => {
       setTimeout(() => {
@@ -233,8 +254,17 @@ const Portfolio = () => {
         { scale: 0.8, opacity: 0 },
         { scale: 1, opacity: 1, duration: 1, ease: 'power2.out' }
       );
+
+      // Initialize title
+      if (titleRef.current && projects.length > 0) {
+        setCurrentTitle(projects[0].title);
+        gsap.fromTo(titleRef.current,
+          { opacity: 0, y: -30 },
+          { opacity: 1, y: 0, duration: 1, delay: 0.5, ease: 'power2.out' }
+        );
+      }
     }
-  }, [projectsVisible, projects.length]);
+  }, [projectsVisible, projects.length, projects]);
 
   return (
     <>
@@ -253,6 +283,11 @@ const Portfolio = () => {
           </h1>
           
           <div ref={projectsRef} className={`carousel-container ${projectsVisible ? 'visible' : ''}`}>
+            {/* Floating Project Title */}
+            <div ref={titleRef} className="floating-title">
+              {currentTitle}
+            </div>
+            
             <div className="carousel-scene">
               <div ref={carouselRef} className="carousel-3d">
                 {projects.map((project, index) => (
@@ -261,7 +296,6 @@ const Portfolio = () => {
                       <video src={project.image} alt={project.title} width="100%" height="100%" autoPlay loop muted playsInline style={{objectFit: 'cover'}} />
                     </div>
                     <div className="project-content">
-                      <h3 className="project-title">{project.title}</h3>
                       <p className="project-description">{project.description}</p>
                       <div className="project-tech">
                         {project.technologies.map((tech, techIndex) => (

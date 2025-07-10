@@ -24,7 +24,7 @@
     .carousel-container {
         flex: 1;
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
         position: relative;
         opacity: 0;
@@ -33,6 +33,22 @@
         &.visible {
             opacity: 1;
         }
+    }
+
+    .floating-title {
+        position: absolute;
+        top: 0;
+        transform: translateX(-50%);
+        z-index: 200;
+        font-size: 42px;
+        font-weight: 700;
+        color: #F46C39;
+        text-align: center;
+        opacity: 0;
+        text-shadow: 0 2px 20px rgba(244, 108, 57, 0.3);
+        font-family: 'Poppins', sans-serif;
+        white-space: nowrap;
+        pointer-events: none;
     }
 
     .carousel-scene {
@@ -99,19 +115,12 @@
             border-radius: 0 0 20px 20px;
         }
 
-        .project-title {
-            font-size: 22px;
-            margin-bottom: 12px;
-            color: #F46C39;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
         .project-description {
             font-size: 12px;
             color: #e0e0e0;
-            margin-bottom: 16px;
-            margin-top: 0;
+            margin-bottom: 10px;
+            height: 100px;
+            margin-top: 15px;
             line-height: 1.5;
             overflow: hidden;
             display: -webkit-box;
@@ -125,7 +134,6 @@
             flex-wrap: wrap;
             justify-content: space-evenly;
             // gap: 8px;
-            margin-bottom: 20px;
             
             .tech-tag {
                 display: inline-flex;
@@ -150,7 +158,6 @@
         .project-links {
             display: flex;
             justify-content: space-around;
-            gap: 12px;
             margin-top: auto;
             
             .btn-link {
@@ -280,6 +287,11 @@
             font-size: 48px;
         }
 
+        .floating-title {
+            font-size: 36px;
+            top: 30px;
+        }
+
         .carousel-scene {
             height: 500px;
         }
@@ -312,6 +324,11 @@
             margin-bottom: 20px;
         }
 
+        .floating-title {
+            font-size: 28px;
+            top: 50px;
+        }
+
         .carousel-scene {
             height: 450px;
             perspective: 900px;
@@ -331,10 +348,6 @@
                 padding: 0 12px 12px 12px;
             }
             
-            .project-title {
-                font-size: 18px;
-                margin-bottom: 8px;
-            }
             
             .project-description {
                 font-size: 13px;
@@ -393,6 +406,14 @@
             padding-left: 0;
         }
 
+        .floating-title {
+            font-size: 22px;
+            top: -50px;
+            max-width: 90%;
+            white-space: normal;
+            line-height: 1.2;
+        }
+
         .carousel-scene {
             height: 380px;
             perspective: 700px;
@@ -412,10 +433,6 @@
                 padding: 0 10px 10px 10px;
             }
             
-            .project-title {
-                font-size: 16px;
-                margin-bottom: 6px;
-            }
             
             .project-description {
                 font-size: 12px;
@@ -486,6 +503,12 @@
             margin-bottom: 10px;
         }
 
+        .floating-title {
+            font-size: 18px;
+            top: -40px;
+            max-width: 95%;
+        }
+
         .carousel-scene {
             height: 340px;
             perspective: 600px;
@@ -505,9 +528,6 @@
                 padding: 0 8px 8px 8px;
             }
             
-            .project-title {
-                font-size: 15px;
-            }
             
             .project-description {
                 font-size: 11px;

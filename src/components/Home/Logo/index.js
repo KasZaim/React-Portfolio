@@ -111,7 +111,7 @@ const Logo = () => {
     return () => {
       clearTimeout(timeoutId)
     }
-  }, [])
+  }, [startYearsCount, startProjectsCount, startHoursCount]);
 
   console.log('showImage:', showImage);
 
