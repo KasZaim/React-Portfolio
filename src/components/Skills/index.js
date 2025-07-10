@@ -106,7 +106,11 @@ const Skills = () => {
                     <div className="right-zone">
                         <div className="skills-container">
                             {skills.map((skill, index) => (
-                                <div className="skill-box" key={index}>
+                                <div 
+                                    className="skill-box" 
+                                    key={index}
+                                    style={{ animationDelay: `${2 + index * 0.1}s` }}
+                                >
                                     <img 
                                         src={skill.icon} 
                                         alt={skill.name} 
