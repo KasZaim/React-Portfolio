@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import AnimatedLetters from '../AnimatedLetters';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import gsap from 'gsap';
 
 import angularIcon from '../../assets/images/icons/angular.svg';
@@ -34,14 +34,17 @@ const Portfolio = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
   const [loading, setLoading] = useState(true);
   const [projectsVisible, setProjectsVisible] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isRotating, setIsRotating] = useState(false);
   const projectsRef = useRef(null);
+  const carouselRef = useRef(null);
 
   const projects = [
     {
       id: 1,
       title: 'Videoflix',
       description: 'Videoflix ist eine moderne Full-Stack-Streaming-Plattform im Stil von Netflix mit Benutzer-Authentifizierung, intuitiver Bedienung und hochauflösender Wiedergabe auf allen Geräten.',
-      technologies: ['Angular', 'Django', 'TypeScript', 'SCSS', ,'HTML', 'JavaScript'],
+      technologies: ['Angular', 'Django', 'TypeScript', 'SCSS', 'HTML', 'JavaScript'],
       image: require('../../assets/images/videoflix preview.mp4'),
       githubLink: 'https://github.com/yourusername/ecommerce',
       liveLink: 'https://videoflix.kaserm.dev/'
@@ -100,6 +103,86 @@ const Portfolio = () => {
     'React': reactIcon
   };
 
+  // 3D Carousel Functions
+  const rotateCarousel = (newIndex) => {
+    if (isRotating) return;
+    
+    setIsRotating(true);
+    setCurrentIndex(newIndex);
+    
+    if (carouselRef.current) {
+      const angle = (360 / projects.length) * newIndex;
+      gsap.to(carouselRef.current, {
+        rotationY: -angle,
+        duration: 0.8,
+        ease: "power2.out",
+        onComplete: () => setIsRotating(false)
+      });
+    }
+  };
+
+  const nextProject = () => {
+    const newIndex = (currentIndex + 1) % projects.length;
+    rotateCarousel(newIndex);
+  };
+
+  const prevProject = () => {
+    const newIndex = currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
+    rotateCarousel(newIndex);
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowLeft') {
+        prevProject();
+      } else if (event.key === 'ArrowRight') {
+        nextProject();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentIndex]);
+
+  // Touch/Swipe support
+  useEffect(() => {
+    let startX = 0;
+    let startY = 0;
+    
+    const handleTouchStart = (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const endY = e.changedTouches[0].clientY;
+      const deltaX = endX - startX;
+      const deltaY = endY - startY;
+
+      // Check if horizontal swipe is more significant than vertical
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+        if (deltaX > 0) {
+          prevProject();
+        } else {
+          nextProject();
+        }
+      }
+    };
+
+    const carousel = carouselRef.current;
+    if (carousel) {
+      carousel.addEventListener('touchstart', handleTouchStart);
+      carousel.addEventListener('touchend', handleTouchEnd);
+      
+      return () => {
+        carousel.removeEventListener('touchstart', handleTouchStart);
+        carousel.removeEventListener('touchend', handleTouchEnd);
+      };
+    }
+  }, [currentIndex]);
+
   useEffect(() => {
       setTimeout(() => {
           setLetterClass('text-animate-hover');
@@ -116,25 +199,42 @@ const Portfolio = () => {
   }, []);
 
   useEffect(() => {
-    if (projectsVisible && projectsRef.current) {
-      // Use GSAP to animate project cards
-      const projectCards = projectsRef.current.querySelectorAll('.project-card');
-      gsap.fromTo(
-        projectCards,
-        {
-          y: 100,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.2,
-          duration: 0.8,
-          ease: 'power3.out',
-        }
+    if (projectsVisible && carouselRef.current) {
+      // Initialize 3D carousel positioning
+      const projectCards = carouselRef.current.querySelectorAll('.project-card');
+      
+      // Responsive radius based on screen size
+      const getRadius = () => {
+        if (window.innerWidth <= 360) return 280;
+        if (window.innerWidth <= 480) return 320;
+        if (window.innerWidth <= 768) return 350;
+        if (window.innerWidth <= 1200) return 380;
+        return 400;
+      };
+      
+      const radius = getRadius();
+      const angleStep = 360 / projects.length;
+      
+      projectCards.forEach((card, index) => {
+        const angle = angleStep * index;
+        const x = Math.sin(angle * Math.PI / 180) * radius;
+        const z = Math.cos(angle * Math.PI / 180) * radius;
+        
+        gsap.set(card, {
+          x: x,
+          z: z,
+          rotationY: angle,
+          opacity: 1
+        });
+      });
+
+      // Animate carousel entrance
+      gsap.fromTo(carouselRef.current, 
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1, ease: 'power2.out' }
       );
     }
-  }, [projectsVisible]);
+  }, [projectsVisible, projects.length]);
 
   return (
     <>
@@ -152,34 +252,68 @@ const Portfolio = () => {
             />
           </h1>
           
-          <div ref={projectsRef} className={`projects-container ${projectsVisible ? 'visible' : ''}`}>
-            {projects.map((project) => (
-              <div className="project-card" key={project.id}>
-                <div className="project-image">
-                  <video src={project.image} alt={project.title} width="100%" height="100%" autoPlay loop muted playsInline style={{objectFit: 'cover'}} />
-                </div>
-                <div className="project-content">
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
-                  <div className="project-tech">
-                    {project.technologies.map((tech, index) => (
-                      <span key={index} className="tech-tag">
-                        <img src={techIcons[tech]} alt={tech} className="tech-icon" />
-                        {tech}
-                      </span>
-                    ))}
+          <div ref={projectsRef} className={`carousel-container ${projectsVisible ? 'visible' : ''}`}>
+            <div className="carousel-scene">
+              <div ref={carouselRef} className="carousel-3d">
+                {projects.map((project, index) => (
+                  <div className={`project-card ${index === currentIndex ? 'active' : ''}`} key={project.id}>
+                    <div className="project-image">
+                      <video src={project.image} alt={project.title} width="100%" height="100%" autoPlay loop muted playsInline style={{objectFit: 'cover'}} />
+                    </div>
+                    <div className="project-content">
+                      <h3 className="project-title">{project.title}</h3>
+                      <p className="project-description">{project.description}</p>
+                      <div className="project-tech">
+                        {project.technologies.map((tech, techIndex) => (
+                          <span key={techIndex} className="tech-tag">
+                            <img src={techIcons[tech]} alt={tech} className="tech-icon" />
+                            
+                          </span>
+                        ))}
+                      </div>
+                      <div className="project-links">
+                        <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="btn-link">
+                          <FontAwesomeIcon icon={faGithub} /> Code
+                        </a>
+                        <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="btn-link">
+                          <FontAwesomeIcon icon={faEye} /> Demo
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                  <div className="project-links">
-                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="btn-link">
-                      <FontAwesomeIcon icon={faGithub} color="#F46C39" /> Code
-                    </a>
-                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="btn-link">
-                      <FontAwesomeIcon icon={faEye} /> Demo
-                    </a>
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
+            
+            {/* Navigation Controls */}
+            <div className="carousel-nav">
+              <button 
+                className="nav-btn nav-prev" 
+                onClick={prevProject}
+                disabled={isRotating}
+              >
+                <FontAwesomeIcon icon={faChevronLeft} />
+              </button>
+              <button 
+                className="nav-btn nav-next" 
+                onClick={nextProject}
+                disabled={isRotating}
+              >
+                <FontAwesomeIcon icon={faChevronRight} />
+              </button>
+            </div>
+
+            {/* Indicators */}
+            <div className="carousel-indicators">
+              {projects.map((_, index) => (
+                <button
+                  key={index}
+                  className={`indicator ${index === currentIndex ? 'active' : ''}`}
+                  onClick={() => rotateCarousel(index)}
+                  disabled={isRotating}
+                />
+              ))}
+            </div>
           </div>
         </div>
       )}
